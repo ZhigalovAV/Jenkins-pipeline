@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    environment {
+        PROJECT_NAME = "My super Project"
+        OWNER_NAME = "AndreyZh"    }
+
+    stages {
+        stage('1-Build') {
+            steps {
+                echo 'Begin build'
+                echo 'Go building...'
+                echo 'end build'
+            }
+        }
+        stage('2-Test') {
+            steps {
+                echo 'Begin test ${PROJECT_NAME} by ${OWNER_NAME}'
+                echo "${PROJECT_NAME} by ${OWNER_NAME}"
+                echo 'Go testing...'
+                echo ''
+                sh 'ls -la'
+                echo 'end testing'
+            }
+        }
+        stage('3-Deploy') {
+            steps {
+                echo 'Begin test'
+                echo 'Go testing...'
+                sh '''
+                echo 'Line1'
+                echo 'Line2'
+                '''
+                echo 'end testing'
+            }
+        }
+    }
+}
